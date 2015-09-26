@@ -1,10 +1,15 @@
 <template name="boards">
   <div class="row">
-  <h3>Boards List </h3>
-  <ul>
-  {{# each boards}}
-    <li><a href="/boards/{{_id}}" >{{title}}</a><span class="deleteBoardItem" >Delete</span> </li>
-  {{/each}}
-  </ul>
-</div>
+    <h3>Boards List </h3>
+    <ul>
+    {{# each boards}}
+      <li class="board-link" ><a href="/boards/{{_id}}" >{{title}}</a><span class="deleteBoardItem" >Delete</span> </li>
+    {{/each}}
+    </ul>
+  </div>
+  <div class="row">
+    <form class="createNewModelForm" >
+      <input type="text" name="title" placeholder='Enter new board title'>
+    </form>
+  </div>
 </template>

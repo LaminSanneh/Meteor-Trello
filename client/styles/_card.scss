@@ -1,0 +1,29 @@
+.card{
+  padding: 5px;
+  cursor: pointer;
+  margin: 0px 0px 10px;
+  background-color: #FFFFFF;
+  border-radius: 2px;
+  position: relative;
+
+  &:hover{
+    background-color: lighten(#E2E4E6, 5%);
+  }
+}
+
+.list__cards{
+  min-height: 50px;
+}
+
+.list-card-options{
+  position: absolute;
+  padding: 3px 5px;
+  right: 10px;
+  top: 10px;
+  font-size: 0.8rem;
+
+  &:hover{
+    background-color: #000000;
+    color: #FFFFFF;
+  }
+}

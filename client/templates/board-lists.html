@@ -1,5 +1,10 @@
 <template name="boardLists">
-  {{#each lists}}
-    {{> boardList}}
-  {{/each}}
+  <div class="lists" >
+    {{#each lists}}
+      {{> boardList}}
+    {{/each}}
+    <div class="list create-list">
+      {{> listInlineModelCreator }}
+    </div>
+  </div>
 </template>

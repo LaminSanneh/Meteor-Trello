@@ -1,5 +1,13 @@
 <template name="boardList">
-  <div class="list__cards">
-    {{title}}
+  <div class="list" >
+    <div class="list__cards">
+      {{title}}
+      {{#each cards}}
+        <p>
+          {{> listCard}}
+        </p>
+      {{/each}}
+    </div>
+    {{> cardInlineModelCreator }}
   </div>
 </template>

@@ -1,0 +1,23 @@
+.lists{
+  display: flex;
+  flex-direction: row;
+  color: #000000;
+  align-items: flex-start;
+}
+
+.list{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 270px;
+  flex: 0 0 270px;
+  background-color: #E2E4E6;
+  margin: 0px 10px 0px 0px;
+  border-radius: 2px;
+
+  &.create-list{
+    background: rgba(0,0,0,.12);
+    cursor: pointer;
+    color: #fff;
+  }
+}
