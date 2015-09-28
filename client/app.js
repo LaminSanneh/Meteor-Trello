@@ -23,7 +23,9 @@ Template.boards.events({
 
 Template.board.helpers({
   lists: function () {
-    return List.find({boardId: this._id});
+    return List.find({boardId: this._id}, {
+      sort: { order: 1 }
+    });
   }
 });
 
@@ -81,10 +83,18 @@ Template.listInlineModelCreator.events({
   },
   'submit .model-creator-form': function (event, template) {
     event.preventDefault();
-    var board = this.board;
+    var board = this.board, order;
+    var listWithHighestOrder = List.findOne({boardId: board._id}, {sort: {order: -1}});
+    if(listWithHighestOrder == null){
+      order = 0;
+    }
+    else{
+      order = listWithHighestOrder.order + 1;
+    }
     List.insert({
       title: event.target.title.value,
-      boardId: board._id
+      boardId: board._id,
+      order: order
     });
   }
 });

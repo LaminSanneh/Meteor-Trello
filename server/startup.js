@@ -1,4 +1,6 @@
 Meteor.startup(function () {
+  Sortable.collections = ['lists', 'cards'];
+
   if(Board.find().count() == 0){
     var lists1 = [
       {
@@ -27,7 +29,8 @@ Meteor.startup(function () {
     board1 = Board.insert(board1);
     board1 = Board.findOne({_id: board1});
 
-    lists1.forEach(function (list) {
+    lists1.forEach(function (list, i) {
+      list.order = i;
       list = List.insert(list);
       list = List.findOne({_id: list});
       list.boardId = board1._id;
@@ -37,7 +40,8 @@ Meteor.startup(function () {
     board2 = Board.insert(board2);
     board2 = Board.findOne({_id: board2});
 
-    lists2.forEach(function (list) {
+    lists2.forEach(function (list, i) {
+      list.order = i;
       list = List.insert(list);
       list = List.findOne({_id: list});
       list.boardId = board2._id;

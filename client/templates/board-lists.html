@@ -1,8 +1,8 @@
 <template name="boardLists">
   <div class="lists" >
-    {{#each lists}}
+    {{#sortable items=lists sortField="order"}}
       {{> boardList}}
-    {{/each}}
+    {{/sortable}}
     <div class="list create-list">
       {{> listInlineModelCreator }}
     </div>
