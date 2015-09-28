@@ -1,7 +1,7 @@
 <template name="boards">
   <div class="row">
     <h3>Boards List </h3>
-    <ul>
+    <ul class="boards" >
     {{# each boards}}
       <li class="board-link" ><a href="/boards/{{_id}}" >{{title}}</a><span class="deleteBoardItem" >Delete</span> </li>
     {{/each}}

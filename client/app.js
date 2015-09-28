@@ -7,7 +7,18 @@ Template.boards.helpers({
 Template.boards.events({
   'click .deleteBoardItem': function () {
     console.log(this);
-    Meteor.call("deleteModel", this);
+    var board = this;
+    new Confirmation({
+      message: "Are you sure ?",
+      title: "Delete Board Confirmation",
+      cancelText: "Cancel",
+      okText: "Ok",
+      success: true
+    }, function (ok) {
+      if(ok){
+        Meteor.call("deleteModel", board);
+      }
+    });
   },
   'submit .createNewModelForm': function (event, target) {
     event.preventDefault();
