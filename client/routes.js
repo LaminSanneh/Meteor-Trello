@@ -8,4 +8,7 @@ Router.route('/boards/:_id', function () {
       return Board.findOne({_id: this.params._id});
     }
   });
+},
+{
+  name: 'board'
 });

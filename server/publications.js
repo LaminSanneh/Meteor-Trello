@@ -5,3 +5,7 @@ Meteor.publish("boards", function () {
 Meteor.publish("lists", function () {
   return List.find();
 });
+
+Meteor.publish("cards", function () {
+  return Card.find();
+});

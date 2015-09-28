@@ -3,7 +3,7 @@
     <h3>Boards List </h3>
     <ul class="boards" >
     {{# each boards}}
-      <li class="board-link" ><a href="/boards/{{_id}}" >{{title}}</a><span class="deleteBoardItem" >Delete</span> </li>
+      <li class="board-link" ><a href="{{pathFor route='board' data=this }}" >{{title}}</a><span class="deleteBoardItem" >Delete</span> </li>
     {{/each}}
     </ul>
   </div>

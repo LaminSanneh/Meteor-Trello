@@ -42,7 +42,9 @@ Template.board.helpers({
 
 Template.boardList.helpers({
   cards: function () {
-    return Card.find({listId: this._id});
+    return Card.find({listId: this._id}, {
+      sort: { order: 1 }
+    });
   }
 });
 
@@ -66,10 +68,19 @@ Template.cardInlineModelCreator.events({
   },
   'submit .model-creator-form': function (event, template) {
     event.preventDefault();
-    var list = this;
+    var list = this, order;
+    var listWithHighestOrder = Card.findOne({listId: list._id}, {sort: {order: -1}});
+    console.log(this);
+    if(listWithHighestOrder == null){
+      order = 0;
+    }
+    else{
+      order = listWithHighestOrder.order + 1;
+    }
     Card.insert({
       title: event.target.title.value,
-      listId: list._id
+      listId: list._id,
+      order: order
     });
   }
 });
