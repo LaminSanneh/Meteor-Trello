@@ -8,7 +8,16 @@ Router.route('/boards/:_id', function () {
       return Board.findOne({_id: this.params._id});
     }
   });
-},
-{
+},{
   name: 'board'
+});
+
+Router.route('/cards/:_id', function () {
+  this.render('card', {
+    data: function () {
+      return Card.findOne({_id: this.params._id});
+    }
+  });
+},{
+  name: 'card'
 });

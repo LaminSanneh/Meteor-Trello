@@ -1,13 +1,17 @@
 .card{
   padding: 5px;
   cursor: pointer;
-  margin: 0px 0px 10px;
+  margin: 10px 0px;
   background-color: #FFFFFF;
   border-radius: 2px;
   position: relative;
 
   &:hover{
     background-color: lighten(#E2E4E6, 5%);
+  }
+
+  &.sortable-ghost{
+    border: 2px solid blue;
   }
 }
 

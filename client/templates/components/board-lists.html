@@ -1,6 +1,6 @@
 <template name="boardLists">
   <div class="lists" >
-    {{#sortable items=lists sortField="order"}}
+    {{#sortable items=lists sortField="order" filter=".create-list" }}
       {{> boardList}}
     {{/sortable}}
     <div class="list create-list">

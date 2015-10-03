@@ -2,11 +2,9 @@
   <div class="list" >
     <div class="list__cards">
       {{title}}
-      {{#each cards}}
-        <p>
-          {{> listCard}}
-        </p>
-      {{/each}}
+      {{#sortable items=cards sortField="order" filter=".create-list" }}
+        {{> listCard}}
+      {{/sortable}}
     </div>
     {{> cardInlineModelCreator }}
   </div>

@@ -69,13 +69,12 @@ Template.cardInlineModelCreator.events({
   'submit .model-creator-form': function (event, template) {
     event.preventDefault();
     var list = this, order;
-    var listWithHighestOrder = Card.findOne({listId: list._id}, {sort: {order: -1}});
-    console.log(this);
-    if(listWithHighestOrder == null){
+    var cardWithHighestOrder = Card.findOne({listId: list._id}, {sort: {order: -1}});
+    if(cardWithHighestOrder == null){
       order = 0;
     }
     else{
-      order = listWithHighestOrder.order + 1;
+      order = cardWithHighestOrder.order + 1;
     }
     Card.insert({
       title: event.target.title.value,
@@ -119,4 +118,18 @@ Template.listInlineModelCreator.events({
       order: order
     });
   }
+});
+
+Template.listCard.events({
+  'click': function (event, template) {
+    Router.go('card', this);
+  }
+});
+
+Template.card.onRendered(function () {
+  Overlay.show('cardOverlayContent');
+});
+
+Template.card.onDestroyed(function () {
+  Overlay.hide();
 });
