@@ -140,7 +140,6 @@ Template.listCard.events({
   'click .delete-card-item': function (event, template) {
     var card = this;
     event.stopImmediatePropagation();
-    console.log(card);
     new Confirmation({
       message: "Are you sure ?",
       title: "Delete Card Confirmation",
@@ -154,7 +153,7 @@ Template.listCard.events({
     });
   },
   'click': function (event, template) {
-    // Router.go('card', this);
+    Router.go('card', this);
   }
 });
 
