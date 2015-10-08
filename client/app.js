@@ -45,6 +45,22 @@ Template.boardList.helpers({
     return Card.find({listId: this._id}, {
       sort: { order: 1 }
     });
+  },
+  boardListOptions: function () {
+    var list = this;
+    return {
+        group: {
+            name: "boardLists",
+            pull: true,
+            put: true
+        },
+        onAdd: function (evt) {
+          var card = _.clone(evt.data);
+          evt.data = card;
+          delete evt.data._id;
+          evt.data.listId = list._id;
+        }
+    };
   }
 });
 
@@ -121,8 +137,24 @@ Template.listInlineModelCreator.events({
 });
 
 Template.listCard.events({
+  'click .delete-card-item': function (event, template) {
+    var card = this;
+    event.stopImmediatePropagation();
+    console.log(card);
+    new Confirmation({
+      message: "Are you sure ?",
+      title: "Delete Card Confirmation",
+      cancelText: "Cancel",
+      okText: "Ok",
+      success: true
+    }, function (ok) {
+      if(ok){
+        Card.remove({_id: card._id});
+      }
+    });
+  },
   'click': function (event, template) {
-    Router.go('card', this);
+    // Router.go('card', this);
   }
 });
 

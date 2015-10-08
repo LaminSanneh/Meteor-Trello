@@ -7,6 +7,9 @@ allowed.forEach(function(item){
     },
     update: function () {
       return true;
+    },
+    remove: function () {
+      return true;
     }
   });
 });
