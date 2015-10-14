@@ -157,10 +157,34 @@ Template.listCard.events({
   }
 });
 
-Template.card.onRendered(function () {
-  Overlay.show('cardOverlayContent');
+Template.card.events({
+  'click .close-overlay-button': function (event, template) {
+    var list = List.findOne({_id: this.listId}),
+      board = Board.findOne({_id:list.boardId});
+    Router.go('board', board);
+  }
 });
 
-Template.card.onDestroyed(function () {
-  Overlay.hide();
+Template.baordsDropdown.helpers({
+  dropdownActive: function() {
+    return Template.instance().dropdownActive.get();
+  },
+  boards: function () {
+    return Board.find();
+  }
+});
+
+Template.baordsDropdown.events({
+  'click .dropdown-toggler': function() {
+    var status = Template.instance().dropdownActive.get();
+    return Template.instance().dropdownActive.set(!status);
+  },
+  'click .board-link a': function() {
+    Template.instance().dropdownActive.set(false);
+  }
+});
+
+Template.baordsDropdown.onCreated(function() {
+  this.dropdownActive = new ReactiveVar;
+  this.dropdownActive.set(true);
 });

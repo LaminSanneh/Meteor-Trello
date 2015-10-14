@@ -1,0 +1,41 @@
+.boards-dropdown{
+  overflow-y: visible;
+  display: inline-block;
+
+  ul{
+    padding: 0;
+  }
+
+  .board-link{
+    padding: 10px;
+    background-color: #E1EFF7;
+    margin-bottom: 10px;
+    border-radius: 3px;
+
+    a{
+      color: #000000;
+      text-decoration: none;
+    }
+  }
+
+  .board-links{
+    padding: 6px;
+    width: 300px;
+    max-width: 100%;
+    position: absolute;
+    background-color: #FFFFFF;
+    z-index: 200;
+    margin: 0;
+    border-radius: 3px;
+  }
+}
+
+.dropdown-toggler{
+  padding: 10px;
+  display: block;
+  margin-bottom: 4px;
+  color: #FFFFFF;
+  border-radius: 3px;
+  background-color: #3E8CB9;
+  cursor: pointer;
+}

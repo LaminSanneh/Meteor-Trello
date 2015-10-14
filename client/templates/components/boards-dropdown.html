@@ -1,0 +1,12 @@
+<template name="baordsDropdown">
+  <div class="boards-dropdown">
+      <span class="dropdown-toggler">Boards</span>
+      {{#if dropdownActive }}
+        <ul class="board-links" >
+          {{# each boards}}
+            <li class="board-link" ><a href="{{pathFor route='board' data=this }}" >{{title}}</a></li>
+          {{/each}}
+        </ul>
+      {{/if}}
+  </div>
+</template>

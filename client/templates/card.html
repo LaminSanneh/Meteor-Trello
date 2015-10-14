@@ -1,3 +1,13 @@
 <template name="card">
-  <h2>Card Page</h2>
+  <div class="overlay-popup-container">
+    <div class="overlay-popup">
+        <span class="close-overlay-button" >Close</span>
+        <div class="row">
+          <p>
+            Put editor here
+          </p>
+        </div>
+      {{outlet}}
+    </div>
+  </div>
 </template>

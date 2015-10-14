@@ -4,16 +4,22 @@ html{
   // color: #FFFFFF;
 }
 
+body{
+  margin: 0;
+}
+
 .boards, .lists{
   color: #FFFFFF;
 }
 
-.board-link{
-  padding: 10px;
-  background-color: #E2E4E6;
-  display: inline-block;
-  margin-bottom: 10px;
-  border-radius: 3px;
+.boards{
+  .board-link{
+    padding: 10px;
+    background-color: #E2E4E6;
+    display: inline-block;
+    margin-bottom: 10px;
+    border-radius: 3px;
+  }
 }
 
 .model-creator-form{
@@ -41,3 +47,5 @@ html{
 
 @import "list";
 @import "card";
+@import "overlay-popup";
+@import "boards-dropdown";
