@@ -21,3 +21,7 @@ Router.route('/cards/:_id', function () {
 },{
   name: 'card'
 });
+
+Router.route('/login', function () {
+  this.render('login');
+});
