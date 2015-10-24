@@ -1,3 +1,9 @@
+Router.plugin('auth', {
+  except: [
+    'login'
+  ]
+});
+
 Router.route('/', function () {
   this.render('boards');
 });

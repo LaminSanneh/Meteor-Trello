@@ -136,6 +136,42 @@ Template.listInlineModelCreator.events({
   }
 });
 
+Template.listInlineModelEditor.onCreated(function() {
+  this.inEditMode = new ReactiveVar;
+  this.inEditMode.set(false);
+});
+
+Template.listInlineModelEditor.helpers({
+  inEditMode: function() {
+    return Template.instance().inEditMode.get();
+  }
+});
+
+Template.listInlineModelEditor.events({
+  'click .add-model-link': function (event, template) {
+    template.inEditMode.set(true);
+  },
+  'click .cancel-add-model-link': function (event, template) {
+    template.inEditMode.set(false);
+  },
+  'submit .model-creator-form': function (event, template) {
+    event.preventDefault();
+    var board = this.board, order;
+    var listWithHighestOrder = List.findOne({boardId: board._id}, {sort: {order: -1}});
+    if(listWithHighestOrder == null){
+      order = 0;
+    }
+    else{
+      order = listWithHighestOrder.order + 1;
+    }
+    List.insert({
+      title: event.target.title.value,
+      boardId: board._id,
+      order: order
+    });
+  }
+});
+
 Template.listCard.events({
   'click .delete-card-item': function (event, template) {
     var card = this;
@@ -186,5 +222,5 @@ Template.baordsDropdown.events({
 
 Template.baordsDropdown.onCreated(function() {
   this.dropdownActive = new ReactiveVar;
-  this.dropdownActive.set(true);
+  this.dropdownActive.set(false);
 });

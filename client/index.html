@@ -7,8 +7,11 @@
 </head>
 <body>
 <div class="">
-  {{> baordsDropdown}}
+  {{#if currentUser}}
+    {{> baordsDropdown}}
+  {{/if}}
   <a href="/">Home</a>
 </div>
+{{> loginButtons}}
 {{> overlay}}
 </body>
